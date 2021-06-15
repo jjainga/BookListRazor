@@ -1,8 +1,66 @@
 ﻿@page
 @model BookListRazor.Pages.Books.IndexModel
-@{
-    ViewData["Title"] = "Index";
-}
 
 
-<h1>Index Book List</h1>
+<br />
+
+<div class="container row m-0 p-0">
+    <div class="col-9">
+        <h2 class="text-info">Book List</h2>
+    </div>
+
+    <div class="col-3">
+        <a asp-page="Create" class="btn btn-info formaction-control text-white"> Create New Book</a>
+    </div>
+
+    <!---you can use the at sign to beable to write C# in the html pages-->
+    <div class="col col-12 border p-2 mt-2">
+        <form method="post">
+            @if (Model.Books.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            @Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Title)
+                            @*<lable asp-for="Books.FirstOrDefault().Title"></lable>*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m=>m.Books.FirstOrDefault().Author)
+                            @*<lable asp-for="Books.FirstOrDefault().Author"></lable>*@
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Books.FirstOrDefault().ISBN)
+                            @*<lable asp-for="Books.FirstOrDefault().ISBN"></lable>*@
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Books)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => item.ISBN)
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <button asp-page="Edit" asp-route-id="@item.Id" class="btn btn-success btn-sm">Edit</button>
+                    </td>
+
+                </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <p>No Books availble.</p>
+            }
+        </form>
+    </div>
+</div>
