@@ -21,7 +21,7 @@ namespace BookListRazor.Controllers
         [HttpGet]
         public IActionResult GetAll() 
         {
-            return JSON(new {data = _db.Book.ToList()});
+            return Json(new {data = _db.Book.ToList()});
         }
     }
 }
