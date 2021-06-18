@@ -1,12 +1,12 @@
 let dataTable;
 
-$(document.readyState(() => {
+$(document).ready(function() {
     loadDataTable();
-}))
+})
 
-const loadDataTable = () => {
-    dataTable = $('#DT_Load').DataTable({
-        "ajax" : {
+function loadDataTable() {
+    dataTable = $('#DT_load').DataTable({
+        "ajax": {
             "url": "/api/book",
             "type": "GET",
             "datatype": "json"
@@ -20,15 +20,15 @@ const loadDataTable = () => {
                 "render": function(data) {
                     return `
                         <div class="text-center>
-                            <a href="/BookList/Edit?id=${data}" class="btn btn-success test-white" style="cursor:pointer, width: 100px">
+                            <a href="/BookList/Edit?id=${data}" class="btn btn-success test-white" style="cursor:pointer, width: 70px">
                                 Edit
                             </a>
-                            <a  class="btn btn-danger test-white" style="cursor:pointer, width: 100px">
+                            <a  class="btn btn-danger test-white" style="cursor:pointer, width: 70px">
                                 Delete
                             </a>
                         </div>
-                    `;
-                }, "width": "30%"
+                    `}
+                    , "width": "40%"
 
             }
         ],
