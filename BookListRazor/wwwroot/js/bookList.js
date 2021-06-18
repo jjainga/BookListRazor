@@ -23,8 +23,8 @@ function loadDataTable() {
                                 Edit
                             </a>
                             <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'>
-                            Delete
-                        </a>
+                                Delete
+                            </a>
                             
                         </div>`;
                     }, "width": "30%"
